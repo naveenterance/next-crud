@@ -46,7 +46,7 @@ const ArticleList = () => {
 
           <div className="flex gap-2">
             <Remove id={item._id} />
-            <Link href={`/editArticle/${item._id}`}>edit</Link>
+            <Link href={`/editArticle/${item.title}`}>edit</Link>
           </div>
         </div>
       ))}

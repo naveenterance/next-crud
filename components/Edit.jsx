@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Edit = ({ id, Title, Content, Author }) => {
-  const [newTitle, setNewTitle] = useState(Title);
-  const [newContent, setNewContent] = useState(Content);
-  const [newAuthor, setNewAuthor] = useState(Author);
+const Edit = ({ id, title, content, author }) => {
+  console.log("edddd---" + title);
+  const [newTitle, setNewTitle] = useState(title);
+  const [newContent, setNewContent] = useState(content);
+  const [newAuthor, setNewAuthor] = useState(author);
 
   const router = useRouter();
 
@@ -14,10 +15,10 @@ const Edit = ({ id, Title, Content, Author }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/api/articles/${id}`, {
+      const res = await fetch(`http://localhost:3000/api/articles/${title}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json", // Fix Content-Type header
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ newTitle, newContent, newAuthor }),
       });
