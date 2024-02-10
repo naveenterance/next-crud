@@ -17,6 +17,12 @@ export default function AddArticle() {
       alert("Title ,content and author  are required.");
       return;
     }
+    const test = await fetch(`http://localhost:3000/api/articles/${title}`);
+
+    if (test.ok) {
+      alert("Make title more unique.");
+      return;
+    }
 
     try {
       const res = await fetch("http://localhost:3000/api/articles", {
