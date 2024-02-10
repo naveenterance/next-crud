@@ -4,18 +4,13 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request, { params }) {
   const {
-    title: title,
-    content: content,
-    author: author,
+    newTitle: title,
+    newContent: content,
+    newAuthor: author,
   } = await request.json();
   await connectMongoDB();
-  const existingArticle = await Article.findOne({ title: params.title });
 
-  console.log(existingArticle);
-  const articleId = existingArticle._id.toString();
-  console.log(articleId);
-
-  await Article.findByIdAndUpdate(articleId, {
+  await Article.findOneAndUpdate(params, {
     title,
     content,
     author,
@@ -26,7 +21,6 @@ export async function PUT(request, { params }) {
 export async function GET(request, { params }) {
   const { title } = params;
   await connectMongoDB();
-  // console.log({ title });
 
   const article = await Article.findOne({ title });
 

@@ -27,7 +27,7 @@ export default async function EditArticle({ params }) {
       return <div>Article not found</div>;
     }
 
-    const { _id, content, author } = articles;
+    const { _id, content, author } = articles.article;
 
     return <Edit id={_id} title={title} content={content} author={author} />;
   } catch (error) {

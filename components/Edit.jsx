@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Edit = ({ id, title, content, author }) => {
-  console.log("edddd---" + title);
   const [newTitle, setNewTitle] = useState(title);
   const [newContent, setNewContent] = useState(content);
   const [newAuthor, setNewAuthor] = useState(author);
 
+  console.log(title);
+  console.log(content);
+  console.log(author);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -37,11 +39,10 @@ const Edit = ({ id, title, content, author }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <input
-        onChange={(e) => setNewTitle(e.target.value)} // Fix function names
+        onChange={(e) => setNewTitle(e.target.value)}
         value={newTitle}
         className="border border-slate-500 px-8 py-2"
         type="text"
-        placeholder="New Title"
       />
 
       <input
@@ -49,14 +50,12 @@ const Edit = ({ id, title, content, author }) => {
         value={newContent}
         className="border border-slate-500 px-8 py-2"
         type="text"
-        placeholder="New Content"
       />
       <input
         onChange={(e) => setNewAuthor(e.target.value)}
         value={newAuthor}
         className="border border-slate-500 px-8 py-2"
         type="text"
-        placeholder="New Author"
       />
 
       <button className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
